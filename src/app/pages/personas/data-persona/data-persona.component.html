@@ -1,0 +1,35 @@
+
+<nav class="navbar bg-body-tertiary row text-end container-fluid	">
+        <div class="col labelUser">
+            <label for="" class="text-info">{{usuario}}</label>
+        </div>
+  </nav>
+<div class="container">
+    <app-modal-persona [textModal]="'Agregar Persona'" (emiter)="guardar($event)"/>
+    <table class="table mt-3 text-center">
+        <thead class="table-success">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Identificacion</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">edad</th>
+            <th scope="col">celular</th>
+            <th scope="col">Tools</th>
+          </tr>
+        </thead>
+        <tbody>
+            @for (item of personaList; track $index) {
+                <tr>
+                  <th scope="row">{{$index+1}}</th>
+                  <td>{{item.identificacion}}</td>
+                  <td>{{item.nombre}}</td>
+                  <td>{{item.email}}</td>
+                  <td>{{item.edad}}</td>
+                  <td>{{item.celular |telefono}}</td>
+                  <td><button class="btn btn-danger ms-3" (click)="removePerson($index)">Delete</button></td>
+                </tr>
+            }
+        </tbody>
+      </table>
+</div>

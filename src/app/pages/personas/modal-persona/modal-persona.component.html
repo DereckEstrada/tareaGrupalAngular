@@ -1,0 +1,61 @@
+<div class="mt-3">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#'+idPersona" data-bs-whatever="@mdo">{{textModal}}</button>
+<div class="modal fade" id="{{idPersona}}" tabindex="-1" aria-labelledby="ExampleModalModel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="ExampleModalModel">{{textModal}}</h1>
+          <button type="button" class="btn-close" id="close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-start">
+          <form [formGroup]="form" (ngSubmit)="guardar()" method="post">
+            <div class="mb-3">
+              <label for="identificacionId" class="col-form-label">Identificacion:</label>
+              <input type="text" class="form-control" id="identificacionId" name="identificacion"
+              [class.is-invalid]="getInvalid('identificacion')" [(ngModel)]="persona.identificacion" formControlName="identificacion">
+              @if(getInvalid('identificacion')){
+                <p class="text-danger">Identificacion invalida</p>
+              }
+            </div>
+            <div class="mb-3 ">
+                <label for="nombreId" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombreId" name="nombre"
+                [class.is-invalid]="getInvalid('nombre')" [(ngModel)]="persona.nombre" formControlName="nombre">
+                @if(getInvalid('nombre')){
+                  <p class="text-danger">Nombre invalido</p>
+                }
+              </div>
+              <div class="mb-3 ">
+                <label for="emailId" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="emailId" name="email"
+                [class.is-invalid]="getInvalid('email')" [(ngModel)]="persona.email" formControlName="email">
+                @if(getInvalid('email')){
+                  <p class="text-danger">Email invalido</p>
+                }
+              </div>
+              <div class="mb-3">
+                <label for="edadId" class="col-form-label">Edad:</label>
+                <input type="number" class="form-control" id="edadId" name="edad"
+                [class.is-invalid]="getInvalid('edad')" [(ngModel)]="persona.edad" formControlName="edad">
+                @if(getInvalid('edad')){
+                  <p class="text-danger">Edad requerida</p>
+                }
+              </div>
+              <div class="mb-3">
+                <label for="celularId" class="col-form-label">Celular:</label>
+                <input type="text" class="form-control" id="celularId" name="celular"
+                [class.is-invalid]="getInvalid('celular')" [(ngModel)]="persona.celular" formControlName="celular">
+                @if(getInvalid('celular')){
+                  <p class="text-danger">Celular invalido</p>
+                }
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnCerrar" #btnCerrar class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type=" button" (click)="guardar()" class="btn btn-primary" >{{textModal}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
